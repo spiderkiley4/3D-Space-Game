@@ -8,18 +8,15 @@ size = Vector3(60, 1, 60)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Player" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-
-[node name="RigidBody3D" type="RigidBody3D" parent="Player"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-
 [node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_5hpg6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_n88qf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.729172, 0.684331, 0, -0.684331, 0.729172, 0.768141, 11.6944, 0.661191)
+shadow_enabled = true

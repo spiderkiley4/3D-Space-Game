@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cicla0dsip0ct"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3u0og"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.049, 0, 0, 0, 0.498, 0, 0, 0, 0.666, 0, 0, 0)
+shape = SubResource("SphereShape3D_3u0og")
