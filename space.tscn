@@ -24,3 +24,6 @@ transform = Transform3D(1, 0, 0, 0, 0.729172, 0.684331, 0, -0.684331, 0.729172, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_51ds1")]
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.62766, 2.70441)
