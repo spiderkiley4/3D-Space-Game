@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+var projectile = preload("res://projectile.tscn")
 # How fast the player moves in meters per second.
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
@@ -33,3 +33,10 @@ func _physics_process(delta):
 	# Moving the Character
 	velocity = target_velocity
 	move_and_slide()
+
+func fireprojectile():
+	var instance = projectile.instance() #unpacks the scene that is loaded in the preload function
+	instance.position = Vector3(0, 2, 0) #set whatever position you need
+	instance.linear_velocity = Vector3(0, 0, 0) #direction you want it to fire in
+	$MainSceneNode.add_child(instance) #adds child to the 3d world
+	print("spawned projectile")
