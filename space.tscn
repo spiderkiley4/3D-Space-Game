@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=7 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
-[ext_resource type="Script" path="res://space.gd" id="1_pnx73"]
+[ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
+[ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
 size = Vector3(60, 1, 60)
@@ -16,8 +17,9 @@ _data = {
 }
 point_count = 5
 
-[node name="Node" type="Node"]
+[node name="Main" type="Node"]
 script = ExtResource("1_pnx73")
+enemy_scene = ExtResource("2_3nr31")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -33,9 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 0.729172, 0.684331, 0, -0.684331, 0.729172, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_51ds1")]
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.839032, 0.544083, 0, -0.544083, 0.839032, 0, 2.939, 3.403)
 
 [node name="SpawnPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_t3rer")
