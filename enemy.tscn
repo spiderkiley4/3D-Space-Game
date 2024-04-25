@@ -22,3 +22,5 @@ shape = SubResource("BoxShape3D_j1f45")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1.469, -0.222, -1, 3.003, 0.492, 1.539)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
