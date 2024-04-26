@@ -13,7 +13,7 @@ func initialize(start_position, player_position):
 	# We position the mob by placing it at start_position
 	# and rotate it towards player_position, so it looks at the player.
 	look_at_from_position(start_position, player_position, Vector3.UP)
-	# Rotate this mob randomly within range of -90 and +90 degrees,
+# Rotate this mob randomly within range of -90 and +90 degrees,
 	# so that it doesn't move directly towards the player.
 	rotate_y(randf_range(-PI / 4, PI / 4))
 	
@@ -21,9 +21,9 @@ func initialize(start_position, player_position):
 	var random_speed = randi_range(min_speed, max_speed)
 	# We calculate a forward velocity that represents the speed.
 	velocity = Vector3.FORWARD * random_speed
-	# We then rotate the velocity vector based on the mob's Y rotation
+# We then rotate the velocity vector based on the mob's Y rotation
 	# in order to move in the direction the mob is looking.
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
-	
+
 func _on_visible_on_screen_notifier_3d_screen_exited():
 	queue_free()
