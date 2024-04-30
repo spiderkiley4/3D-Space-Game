@@ -1,5 +1,5 @@
 extends MarginContainer
-game = load("res://space.tscn").instance
+var game = load("res://space.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +12,9 @@ func _process(delta):
 
 
 func _on_play_gui_input(event):
-	get_tree().get_root().queue_free()
-	get_tree().get_root().add_child(game)
+	hide()
+	#get_tree().get_root().add_child(game)
+	add_child(game)
+
+func _on_quit_gui_input(event):
+	get_tree().quit()

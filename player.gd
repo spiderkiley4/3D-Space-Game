@@ -24,7 +24,6 @@ func _physics_process(delta):
 		direction.z += 1
 	if Input.is_action_pressed("move_up"):
 		direction.z -= 1
-	
 	var movement_direction = Vector3()
 	if direction != Vector3.ZERO:
 		#direction = direction.normalized()
@@ -55,6 +54,8 @@ func fireprojectile():
 func _input(event):
 	#if Input.is_key_pressed(KEY_J):
 		#rotate_y(0.1)
+	#if Input.is_action_just_pressed("pause"):
+	#	get_tree().paused = !(get_tree().paused)
 	if(OS.get_name() != "Android"):
 		if event is InputEventMouseMotion:
 			var camera_rotation = event.relative * camera_rotation_sensitivity

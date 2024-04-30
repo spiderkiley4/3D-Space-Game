@@ -52,12 +52,14 @@ wait_time = 0.5
 autostart = true
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("4_lwk1f")]
+visibility_mode = 1
 action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
 
 [node name="Button" type="Button" parent="."]
+process_mode = 3
 offset_left = 571.0
 offset_top = 30.0
 offset_right = 791.0
