@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=9 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
 [ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
 [ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
+[ext_resource type="Script" path="res://pause.gd" id="5_32ic8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
 size = Vector3(60, 1, 60)
@@ -23,6 +25,8 @@ enemy_scene = ExtResource("2_3nr31")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_5hpg6")
@@ -35,6 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 0.729172, 0.684331, 0, -0.684331, 0.729172, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_51ds1")]
+process_mode = 1
 
 [node name="SpawnPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_t3rer")
@@ -45,5 +50,18 @@ transform = Transform3D(-0.0164887, 0, 0.999864, 0, 1, 0, -0.999864, 0, -0.01648
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("4_lwk1f")]
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 571.0
+offset_top = 30.0
+offset_right = 791.0
+offset_bottom = 181.0
+script = ExtResource("5_32ic8")
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

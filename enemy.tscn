@@ -7,6 +7,9 @@
 size = Vector3(6.045, 0.87, 2.965)
 
 [node name="Enemy" type="CharacterBody3D"]
+process_mode = 1
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_kn47h")
 
 [node name="Pivot" type="Node3D" parent="."]

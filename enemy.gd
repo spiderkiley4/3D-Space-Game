@@ -6,9 +6,9 @@ extends CharacterBody3D
 @export var max_speed = 18
 
 func _physics_process(_delta):
-	move_and_slide()
-	
-# This function will be called from the Main scene.
+		move_and_slide()
+			
+	# This function will be called from the Main scene.
 func initialize(start_position, player_position):
 	# We position the mob by placing it at start_position
 	# and rotate it towards player_position, so it looks at the player.

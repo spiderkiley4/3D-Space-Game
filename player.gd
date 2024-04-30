@@ -5,11 +5,13 @@ var projectile = preload("res://projectile.tscn")
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 @export var camera_rotation_sensitivity = 0.01
+@export var jump_impulse = 20
 
 var target_velocity = Vector3.ZERO
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if(OS.get_name() != "Android"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 	var direction = Vector3.ZERO
@@ -25,7 +27,7 @@ func _physics_process(delta):
 	
 	var movement_direction = Vector3()
 	if direction != Vector3.ZERO:
-		direction = direction.normalized()
+		#direction = direction.normalized()
 		$Pivot.look_at(position + direction, Vector3.UP)
 		movement_direction = direction.rotated(Vector3.UP, $Camera.rotation.y)
 		
@@ -39,6 +41,8 @@ func _physics_process(delta):
 		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 	# Moving the Character
 	velocity = target_velocity
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		target_velocity.y = jump_impulse
 	move_and_slide()
 
 func fireprojectile():
@@ -51,9 +55,10 @@ func fireprojectile():
 func _input(event):
 	#if Input.is_key_pressed(KEY_J):
 		#rotate_y(0.1)
-	if event is InputEventMouseMotion:
-		var camera_rotation = event.relative * camera_rotation_sensitivity
-		# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
-		rotate(Vector3.DOWN, camera_rotation.x)
-		# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
-		rotate(Vector3.LEFT, camera_rotation.y)
+	if(OS.get_name() != "Android"):
+		if event is InputEventMouseMotion:
+			var camera_rotation = event.relative * camera_rotation_sensitivity
+			# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
+			rotate(Vector3.DOWN, camera_rotation.x)
+			# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
+			rotate(Vector3.LEFT, camera_rotation.y)

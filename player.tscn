@@ -7,6 +7,7 @@
 size = Vector3(6.045, 0.87, 2.965)
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 6
 script = ExtResource("1_q6i3b")
 
 [node name="Pivot" type="Node3D" parent="."]
