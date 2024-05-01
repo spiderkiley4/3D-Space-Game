@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=10 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
 [ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
 [ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
 [ext_resource type="Script" path="res://pause.gd" id="5_32ic8"]
+[ext_resource type="PackedScene" uid="uid://rm00vklca8f" path="res://pausemenu.tscn" id="6_drsxd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
 size = Vector3(60, 1, 60)
@@ -62,8 +63,13 @@ action_down = "move_down"
 process_mode = 3
 offset_left = 571.0
 offset_top = 30.0
-offset_right = 791.0
-offset_bottom = 181.0
+offset_right = 721.0
+offset_bottom = 107.0
+focus_mode = 0
+action_mode = 0
+text = "Pause"
 script = ExtResource("5_32ic8")
+
+[node name="MarginContainer" parent="." instance=ExtResource("6_drsxd")]
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

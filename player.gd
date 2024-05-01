@@ -56,10 +56,10 @@ func _input(event):
 		#rotate_y(0.1)
 	#if Input.is_action_just_pressed("pause"):
 	#	get_tree().paused = !(get_tree().paused)
-	if(OS.get_name() != "Android"):
-		if event is InputEventMouseMotion:
-			var camera_rotation = event.relative * camera_rotation_sensitivity
-			# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
-			rotate(Vector3.DOWN, camera_rotation.x)
-			# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
-			rotate(Vector3.LEFT, camera_rotation.y)
+	#if(OS.get_name() != "Android"):
+	if event is InputEventMouseMotion:
+		var camera_rotation = event.relative * camera_rotation_sensitivity
+		# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
+		rotate(Vector3.DOWN, camera_rotation.x)
+		# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
+		rotate(Vector3.LEFT, camera_rotation.y)
