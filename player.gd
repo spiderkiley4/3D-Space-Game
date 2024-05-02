@@ -24,6 +24,10 @@ func _physics_process(delta):
 		direction.z += 1
 	if Input.is_action_pressed("move_up"):
 		direction.z -= 1
+	if Input.is_action_pressed("jump"):
+		direction.y += 1
+	if Input.is_action_pressed("flydown"):
+		direction.y -= 1
 	var movement_direction = Vector3()
 	if direction != Vector3.ZERO:
 		#direction = direction.normalized()
@@ -36,12 +40,12 @@ func _physics_process(delta):
 	target_velocity.x = movement_direction.x * speed
 	target_velocity.z = movement_direction.z * speed
 	# Vertical Velocity
-	if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
-		target_velocity.y = target_velocity.y - (fall_acceleration * delta)
+	#if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
+	#	target_velocity.y = target_velocity.y - (fall_acceleration * delta)
 	# Moving the Character
 	velocity = target_velocity
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		target_velocity.y = jump_impulse
+	#if is_on_floor() and Input.is_action_just_pressed("jump"):
+	#	target_velocity.y = jump_impulse
 	move_and_slide()
 
 func fireprojectile():
@@ -62,4 +66,4 @@ func _input(event):
 		# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
 		rotate(Vector3.DOWN, camera_rotation.x)
 		# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
-		rotate(Vector3.LEFT, camera_rotation.y)
+		rotate(Vector3.RIGHT, camera_rotation.y)

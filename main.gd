@@ -9,3 +9,6 @@ func _on_enemy_timer_timeout():
 	var player_position = $Player.position
 	enemy.initialize(enemy_spawn_location.position, player_position)
 	add_child(enemy)
+
+
+
