@@ -10,14 +10,16 @@ size = Vector3(6.045, 0.87, 2.965)
 collision_mask = 6
 script = ExtResource("1_q6i3b")
 
-[node name="Pivot" type="Node3D" parent="."]
-
-[node name="spaceship" parent="Pivot" instance=ExtResource("1_65gyr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="Camera" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 0.839032, 0.544083, 0, -0.544083, 0.839032, 0, 2.939, 3.403)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.507382)
 shape = SubResource("BoxShape3D_qy2lc")
+
+[node name="Yaw" type="Node3D" parent="."]
+
+[node name="Pitch" type="Node3D" parent="Yaw"]
+
+[node name="Camera" type="Camera3D" parent="Yaw/Pitch"]
+transform = Transform3D(1, 0, 0, 0, 0.839032, 0.544083, 0, -0.544083, 0.839032, 0, 2.939, 3.403)
+
+[node name="spaceship" parent="Yaw/Pitch" instance=ExtResource("1_65gyr")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

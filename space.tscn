@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=11 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
 [ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
 [ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
 [ext_resource type="Script" path="res://pause.gd" id="5_32ic8"]
-[ext_resource type="PackedScene" uid="uid://rm00vklca8f" path="res://pausemenu.tscn" id="6_drsxd"]
 [ext_resource type="Script" path="res://flyup.gd" id="7_7dros"]
 [ext_resource type="Script" path="res://flydown.gd" id="8_6g83u"]
 
@@ -60,8 +59,6 @@ action_left = "move_left"
 action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
-
-[node name="MarginContainer" parent="." instance=ExtResource("6_drsxd")]
 
 [node name="Button" type="Button" parent="."]
 process_mode = 3

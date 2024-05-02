@@ -31,8 +31,8 @@ func _physics_process(delta):
 	var movement_direction = Vector3()
 	if direction != Vector3.ZERO:
 		#direction = direction.normalized()
-		$Pivot.look_at(position + direction, Vector3.UP)
-		movement_direction = direction.rotated(Vector3.UP, $Camera.rotation.y)
+		#$Yaw.look_at(position + direction, Vector3.UP)
+		movement_direction = direction.rotated(Vector3.UP, $Yaw.rotation.y)
 		
 	# Ground Velocity
 	#target_velocity.x = direction.x * speed
@@ -64,6 +64,6 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var camera_rotation = event.relative * camera_rotation_sensitivity
 		# "yaw" is the term for side-to-side turning of the camera (around a vertical axis)
-		rotate(Vector3.DOWN, camera_rotation.x)
+		$Yaw.rotate(Vector3.DOWN, camera_rotation.x)
 		# "pitch" is the term for up-and-down movement of the camera (around a horizontal axis)
-		rotate(Vector3.RIGHT, camera_rotation.y)
+		$Yaw/Pitch.rotate(Vector3.LEFT, camera_rotation.y)

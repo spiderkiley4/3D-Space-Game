@@ -12,9 +12,10 @@ func _process(delta):
 
 
 func _on_play_gui_input(event):
-	hide()
-	#get_tree().get_root().add_child(game)
-	add_child(game)
+	if Input.is_action_just_pressed("click") or (OS.get_name() == "Android"):
+		hide()
+		#get_tree().get_root().add_child(game)
+		add_child(game)
 
 func _on_quit_gui_input(event):
 	get_tree().quit()

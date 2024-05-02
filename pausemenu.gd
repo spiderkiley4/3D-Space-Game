@@ -1,5 +1,5 @@
 extends MarginContainer
-
+var pausemenu = load("res://pausemenu.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,13 +12,11 @@ func _process(delta):
 
 func _input(event):
 	if(Input.is_action_just_pressed("pause")):
-		get_tree().paused = !(get_tree().paused)
-		if(get_tree().paused == true):
-			show()
-		if(get_tree().paused == false):
-			hide()
+		get_tree().paused = true
+		pausemenu = load("res://pausemenu.tscn").instantiate()
+		get_tree().add_child(pausemenu)
 
 
 func _on_play_gui_input(event):
-	hide()
+	pausemenu.queue_free()
 	get_tree().paused = false

@@ -7,7 +7,8 @@
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ln30l"]
 gradient = SubResource("Gradient_hes3t")
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="PauseMenu" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
