@@ -26,6 +26,7 @@ func _physics_process(delta):
 		direction.z -= 1
 	if Input.is_action_pressed("jump"):
 		direction.y += 1
+		printerr("up")
 	if Input.is_action_pressed("flydown"):
 		direction.y -= 1
 	var movement_direction = Vector3()
@@ -39,6 +40,7 @@ func _physics_process(delta):
 	#target_velocity.z = direction.z * speed
 	target_velocity.x = movement_direction.x * speed
 	target_velocity.z = movement_direction.z * speed
+	target_velocity.y = movement_direction.y * speed
 	# Vertical Velocity
 	#if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 	#	target_velocity.y = target_velocity.y - (fall_acceleration * delta)
