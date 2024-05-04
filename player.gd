@@ -2,6 +2,7 @@ extends CharacterBody3D
 var projectile = preload("res://projectile.tscn")
 # How fast the player moves in meters per second.
 @export var speed = 14
+@export var maxspeed = 14
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
 @export var camera_rotation_sensitivity = 0.01
@@ -26,7 +27,6 @@ func _physics_process(delta):
 		direction.z -= 1
 	if Input.is_action_pressed("jump"):
 		direction.y += 1
-		printerr("up")
 	if Input.is_action_pressed("flydown"):
 		direction.y -= 1
 	var movement_direction = Vector3()
@@ -41,6 +41,19 @@ func _physics_process(delta):
 	target_velocity.x = movement_direction.x * speed
 	target_velocity.z = movement_direction.z * speed
 	target_velocity.y = movement_direction.y * speed
+	#if(target_velocity.x > maxspeed):
+	#	target_velocity.x = maxspeed
+	#if(target_velocity.z > maxspeed):
+	#	target_velocity.z = maxspeed
+	#if(target_velocity.y > maxspeed):
+	#	target_velocity.y = maxspeed
+	#if(target_velocity.x < -2):
+	#	target_velocity.x = -2
+	#if(target_velocity.z < -2):
+	#	target_velocity.z = -2
+	#if(target_velocity.y < -2):
+	#	target_velocity.y = -2
+	
 	# Vertical Velocity
 	#if not is_on_floor(): # If in the air, fall towards the floor. Literally gravity
 	#	target_velocity.y = target_velocity.y - (fall_acceleration * delta)
