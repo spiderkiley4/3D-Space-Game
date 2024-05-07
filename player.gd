@@ -26,7 +26,6 @@ func _physics_process(delta):
 		direction.z -= 1
 	if Input.is_action_pressed("jump"):
 		direction.y += 1
-		printerr("up")
 	if Input.is_action_pressed("flydown"):
 		direction.y -= 1
 	var movement_direction = Vector3()
