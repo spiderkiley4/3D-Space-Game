@@ -7,6 +7,10 @@ var projectile = preload("res://projectile.tscn")
 @export var camera_rotation_sensitivity = 0.01
 @export var jump_impulse = 20
 
+var accelerationx = 0
+var accelerationy = 0
+var accelerationz = 0
+
 var target_velocity = Vector3.ZERO
 
 func _ready():
@@ -17,9 +21,13 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 		
 	if Input.is_action_pressed("move_right"):
-		direction.x += 1
+		accelerationx += 0.01
+		if accelerationx > 1.5:
+			accelerationx = 1.5
 	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
+		accelerationx -= 0.01
+		if accelerationx < -1.5:
+			accelerationx = -1.5
 	if Input.is_action_pressed("move_down"):
 		direction.z += 1
 	if Input.is_action_pressed("move_up"):
@@ -28,6 +36,9 @@ func _physics_process(delta):
 		direction.y += 1
 	if Input.is_action_pressed("flydown"):
 		direction.y -= 1
+	direction.x += accelerationx
+	
+	
 	var movement_direction = Vector3()
 	if direction != Vector3.ZERO:
 		#direction = direction.normalized()
