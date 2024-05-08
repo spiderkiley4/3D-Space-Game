@@ -4,7 +4,7 @@ var projectile = preload("res://projectile.tscn")
 @export var speed = 14
 # The downward acceleration when in the air, in meters per second squared.
 @export var fall_acceleration = 75
-@export var camera_rotation_sensitivity = 0.01
+@export var camera_rotation_sensitivity = 0.002
 @export var jump_impulse = 20
 
 var accelerationx = 0
@@ -21,33 +21,45 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 		
 	if Input.is_action_pressed("move_right"):
-		accelerationx += 0.05
+		accelerationx += 0.020
 		if accelerationx > 1.5:
 			accelerationx = 1.5
 	if Input.is_action_pressed("move_left"):
-		accelerationx -= 0.05
+		accelerationx -= 0.020
 		if accelerationx < -1.5:
 			accelerationx = -1.5
 	if Input.is_action_pressed("move_down"):
-		accelerationz += 0.05
-		if accelerationz < 1.5:
+		accelerationz += 0.020
+		if accelerationz > 1.5:
 			accelerationz = 1.5
 	if Input.is_action_pressed("move_up"):
-		accelerationz += 0.05
+		accelerationz -= 0.020
 		if accelerationz < -1.5:
 			accelerationz = -1.5
 	if Input.is_action_pressed("jump"):
-		direction.y += 1
+		accelerationy += 0.025
+		if accelerationy > 0.5:
+			accelerationy = 0.5
 	if Input.is_action_pressed("flydown"):
-		direction.y -= 1
+		accelerationy -= 0.025
+		if accelerationy < -0.5:
+			accelerationy = -0.5
 	direction.x += accelerationx
 	direction.z += accelerationz
 	direction.y += accelerationy
 	
-	if accelerationx > 0:
+	if (accelerationx > 0 && !Input.is_action_just_pressed("move_right")):
 		accelerationx -= 0.005
-	if accelerationx < 0:
+	if (accelerationx < 0 && !Input.is_action_just_pressed("move_left")):
 		accelerationx += 0.005
+	if (accelerationz > 0 && !Input.is_action_just_pressed("move_down")):
+		accelerationz -= 0.005
+	if (accelerationz < 0 && !Input.is_action_just_pressed("move_up")):
+		accelerationz += 0.005
+	if (accelerationy > 0 && !Input.is_action_just_pressed("jump")):
+		accelerationy -= 0.005
+	if (accelerationy < 0 && !Input.is_action_just_pressed("flydown")):
+		accelerationy += 0.005
 	
 	
 	var movement_direction = Vector3()
