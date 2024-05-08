@@ -56,7 +56,7 @@ curve = SubResource("Curve3D_t3rer")
 transform = Transform3D(-0.0164887, 0, 0.999864, 0, 1, 0, -0.999864, 0, -0.0164887, 25.1666, 0, -24.2911)
 
 [node name="EnemyTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.0
 autostart = true
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("4_lwk1f")]

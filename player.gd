@@ -21,22 +21,33 @@ func _physics_process(delta):
 	var direction = Vector3.ZERO
 		
 	if Input.is_action_pressed("move_right"):
-		accelerationx += 0.01
+		accelerationx += 0.05
 		if accelerationx > 1.5:
 			accelerationx = 1.5
 	if Input.is_action_pressed("move_left"):
-		accelerationx -= 0.01
+		accelerationx -= 0.05
 		if accelerationx < -1.5:
 			accelerationx = -1.5
 	if Input.is_action_pressed("move_down"):
-		direction.z += 1
+		accelerationz += 0.05
+		if accelerationz < 1.5:
+			accelerationz = 1.5
 	if Input.is_action_pressed("move_up"):
-		direction.z -= 1
+		accelerationz += 0.05
+		if accelerationz < -1.5:
+			accelerationz = -1.5
 	if Input.is_action_pressed("jump"):
 		direction.y += 1
 	if Input.is_action_pressed("flydown"):
 		direction.y -= 1
 	direction.x += accelerationx
+	direction.z += accelerationz
+	direction.y += accelerationy
+	
+	if accelerationx > 0:
+		accelerationx -= 0.005
+	if accelerationx < 0:
+		accelerationx += 0.005
 	
 	
 	var movement_direction = Vector3()
