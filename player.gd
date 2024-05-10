@@ -86,10 +86,10 @@ func _physics_process(delta):
 	move_and_slide()
 
 func fireprojectile():
-	var instance = projectile.instance() #unpacks the scene that is loaded in the preload function
+	var instance = projectile.instantiate() #unpacks the scene that is loaded in the preload function
 	instance.position = Vector3(0, 2, 0) #set whatever position you need
-	instance.linear_velocity = Vector3(0, 0, 0) #direction you want it to fire in
-	$Main.add_child(instance) #adds child to the 3d world
+	instance.linear_velocity = Vector3(0, 0, -10) #direction you want it to fire in
+	add_child(instance) #adds child to the 3d world
 	printerr("spawned projectile")
 
 func _input(event):

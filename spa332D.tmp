@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://sk7gttjxyvvo"]
+
+[ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
+[ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
+[ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
+[ext_resource type="Script" path="res://pausebutton.gd" id="5_02du2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n88qf"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="Curve3D" id="Curve3D_t3rer"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 25.1666, 0, -24.2911, 0, 0, 0, 0, 0, 0, -22.8051, 0, -23.5, 0, 0, 0, 0, 0, 0, -23.207, 0, 23.9618, 0, 0, 0, 0, 0, 0, 23.4859, 0, 22.9578, 0, 0, 0, 0, 0, 0, 25.1666, 0, -24.2911),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_vyb8j"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r5rk4"]
+gradient = SubResource("Gradient_vyb8j")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3s55"]
+size = Vector2(60, 60)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_pnx73")
+enemy_scene = ExtResource("2_3nr31")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_5hpg6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_n88qf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.729172, 0.684331, 0, -0.684331, 0.729172, 0.768141, 11.6944, 0.661191)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_51ds1")]
+process_mode = 1
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_t3rer")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.0164887, 0, 0.999864, 0, 1, 0, -0.999864, 0, -0.0164887, 25.1666, 0, -24.2911)
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Virtual Joystick" parent="." instance=ExtResource("4_lwk1f")]
+visibility_mode = 1
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(1800, 950)
+scale = Vector2(3.95312, 2.98438)
+texture_normal = SubResource("GradientTexture2D_r5rk4")
+shape = SubResource("RectangleShape2D_j3s55")
+action = "jump"
+visibility_mode = 1
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+position = Vector2(1800, 1150)
+scale = Vector2(3.95312, 2.98438)
+texture_normal = SubResource("GradientTexture2D_r5rk4")
+shape = SubResource("RectangleShape2D_j3s55")
+action = "flydown"
+visibility_mode = 1
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+position = Vector2(636, 84)
+scale = Vector2(3.95312, 2.98438)
+texture_normal = SubResource("GradientTexture2D_r5rk4")
+shape = SubResource("RectangleShape2D_j3s55")
+action = "pause"
+visibility_mode = 1
+script = ExtResource("5_02du2")
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+position = Vector2(1400, 950)
+scale = Vector2(3.95312, 2.98438)
+texture_normal = SubResource("GradientTexture2D_r5rk4")
+shape = SubResource("RectangleShape2D_j3s55")
+action = "fire_projectile"
+visibility_mode = 1
+
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

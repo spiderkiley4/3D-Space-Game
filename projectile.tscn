@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://Assets/spaceship.glb" id="1_lkhoo"]
 
-[node name="Area3D" type="Area3D"]
+[node name="Projectile" type="RigidBody3D"]
 
-[node name="Projectile" type="RigidBody3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Projectile"]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="spaceship" parent="." instance=ExtResource("1_lkhoo")]
+[node name="spaceship" parent="Area3D" instance=ExtResource("1_lkhoo")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.05, 0, 0, 0)
