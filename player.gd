@@ -44,6 +44,8 @@ func _physics_process(delta):
 		accelerationy -= 0.025
 		if accelerationy < -0.5:
 			accelerationy = -0.5
+	if Input.is_action_pressed("click"):
+		fireprojectile()
 	direction.x += accelerationx
 	direction.z += accelerationz
 	direction.y += accelerationy
@@ -88,7 +90,7 @@ func fireprojectile():
 	instance.position = Vector3(0, 2, 0) #set whatever position you need
 	instance.linear_velocity = Vector3(0, 0, 0) #direction you want it to fire in
 	$Main.add_child(instance) #adds child to the 3d world
-	print("spawned projectile")
+	printerr("spawned projectile")
 
 func _input(event):
 	#if Input.is_key_pressed(KEY_J):

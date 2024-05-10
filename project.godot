@@ -21,6 +21,10 @@ window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/mode=3
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+
 [input]
 
 move_left={

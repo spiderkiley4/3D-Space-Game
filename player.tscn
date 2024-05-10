@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cicla0dsip0ct"]
 
-[ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://spaceship.glb" id="1_65gyr"]
+[ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://Assets/spaceship.glb" id="1_65gyr"]
 [ext_resource type="Script" path="res://player.gd" id="1_q6i3b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qy2lc"]

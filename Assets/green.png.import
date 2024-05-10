@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ja4woxol8yc"
-path.bptc="res://.godot/imported/checker_pattern_dark.png-70cedad2d3abf4ad6166d6614eefa7fb.bptc.ctex"
-path.astc="res://.godot/imported/checker_pattern_dark.png-70cedad2d3abf4ad6166d6614eefa7fb.astc.ctex"
+uid="uid://qwn3r3jjo18a"
+path.s3tc="res://.godot/imported/green.png-5e6f88dff2074ce005f3a236ccef298e.s3tc.ctex"
+path.etc2="res://.godot/imported/green.png-5e6f88dff2074ce005f3a236ccef298e.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,13 +12,13 @@ metadata={
 
 [deps]
 
-source_file="res://addons/phantom_camera/examples/textures/3D/checker_pattern_dark.png"
-dest_files=["res://.godot/imported/checker_pattern_dark.png-70cedad2d3abf4ad6166d6614eefa7fb.bptc.ctex", "res://.godot/imported/checker_pattern_dark.png-70cedad2d3abf4ad6166d6614eefa7fb.astc.ctex"]
+source_file="res://Assets/green.png"
+dest_files=["res://.godot/imported/green.png-5e6f88dff2074ce005f3a236ccef298e.s3tc.ctex", "res://.godot/imported/green.png-5e6f88dff2074ce005f3a236ccef298e.etc2.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=true
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

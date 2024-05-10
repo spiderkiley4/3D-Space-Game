@@ -91,4 +91,12 @@ action = "pause"
 visibility_mode = 1
 script = ExtResource("5_02du2")
 
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+position = Vector2(1400, 950)
+scale = Vector2(3.95312, 2.98438)
+texture_normal = SubResource("GradientTexture2D_r5rk4")
+shape = SubResource("RectangleShape2D_j3s55")
+action = "fire_projectile"
+visibility_mode = 1
+
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
