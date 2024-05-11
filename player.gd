@@ -7,6 +7,7 @@ var projectile = preload("res://projectile.tscn")
 @export var fall_acceleration = 75
 @export var camera_rotation_sensitivity = 0.002
 @export var jump_impulse = 20
+@export var proj_cooldown = 0
 
 var accelerationx = 0
 var accelerationy = 0
@@ -99,12 +100,20 @@ func _physics_process(delta):
 	#	target_velocity.y = jump_impulse
 	move_and_slide()
 
+func _process(delta):
+	proj_cooldown += 1
+
 func fireprojectile():
-	var instance = projectile.instantiate() #unpacks the scene that is loaded in the preload function
-	instance.position = Vector3(0, 2, 0) #set whatever position you need
-	instance.linear_velocity = Vector3(0, 0, -10) #direction you want it to fire in
-	add_child(instance) #adds child to the 3d world
-	printerr("spawned projectile")
+	if proj_cooldown >= 500:
+		var instance = projectile.instantiate() #unpacks the scene that is loaded in the preload function
+		instance.position = Vector3(0, 2, 0) #set whatever position you need
+		#instance.linear_velocity = Vector3(0, 0, -20) #direction you want it to fire in
+		owner.add_child(instance) #adds child to the 3d world
+		instance.position = $Yaw/Pitch/ShootPosition.global_position
+		#instance.rotate_y(90)
+		instance.rotate_object_local(Vector3(0, 1, 0), 90)
+		instance.transform.basis = $Yaw/Pitch.global_transform.basis
+		#proj_cooldown = 0
 
 func _input(event):
 	#if Input.is_key_pressed(KEY_J):

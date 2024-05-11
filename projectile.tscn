@@ -1,12 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://cui5ko0ljxgy1"]
+[gd_scene load_steps=7 format=3 uid="uid://cui5ko0ljxgy1"]
 
-[ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://Assets/spaceship.glb" id="1_lkhoo"]
+[ext_resource type="Script" path="res://projectile.gd" id="1_yagv1"]
+[ext_resource type="ArrayMesh" uid="uid://csricdxe1ehwy" path="res://Assets/spaceship.obj" id="2_2xqym"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vsami"]
+size = Vector3(0.903564, 0.260437, 0.308228)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_146ul"]
+albedo_color = Color(0.701961, 0.552941, 0.0666667, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_th1kc"]
+albedo_color = Color(0.701961, 0.552941, 0.0666667, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjjgx"]
+albedo_color = Color(0.917647, 0.72549, 0.129412, 1)
 
 [node name="Projectile" type="RigidBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+collision_mask = 7
+script = ExtResource("1_yagv1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150583, -0.000213623, -0.000305176)
+shape = SubResource("BoxShape3D_vsami")
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="spaceship" parent="Area3D" instance=ExtResource("1_lkhoo")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.05, 0, 0, 0)
+mesh = ExtResource("2_2xqym")
+surface_material_override/0 = SubResource("StandardMaterial3D_146ul")
+surface_material_override/1 = SubResource("StandardMaterial3D_th1kc")
+surface_material_override/2 = SubResource("StandardMaterial3D_jjjgx")

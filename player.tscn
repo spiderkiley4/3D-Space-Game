@@ -19,7 +19,55 @@ shape = SubResource("BoxShape3D_qy2lc")
 [node name="Pitch" type="Node3D" parent="Yaw"]
 
 [node name="Camera" type="Camera3D" parent="Yaw/Pitch"]
-transform = Transform3D(1, 0, 0, 0, 0.839032, 0.544083, 0, -0.544083, 0.839032, 0, 2.939, 3.403)
+transform = Transform3D(1, 0, 0, 0, 0.986312, 0.164893, 0, -0.164893, 0.986311, 0, 1.95285, 3.403)
+
+[node name="Crosshair" type="Control" parent="Yaw/Pitch/Camera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Yaw/Pitch/Camera/Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line2D" type="Line2D" parent="Yaw/Pitch/Camera/Crosshair/Control"]
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Yaw/Pitch/Camera/Crosshair/Control"]
+rotation = 1.5708
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Yaw/Pitch/Camera/Crosshair/Control"]
+rotation = 3.14159
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Yaw/Pitch/Camera/Crosshair/Control"]
+rotation = 4.71239
+points = PackedVector2Array(55, 0, 0, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="spaceship" parent="Yaw/Pitch" instance=ExtResource("1_65gyr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ShootPosition" type="Marker3D" parent="Yaw/Pitch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.2)
