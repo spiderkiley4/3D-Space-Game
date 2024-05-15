@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://durgo5cvq8i04"]
+[gd_scene load_steps=6 format=3 uid="uid://durgo5cvq8i04"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_kn47h"]
 [ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://Assets/spaceship.glb" id="1_tot12"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1f45"]
 size = Vector3(6.045, 0.87, 2.965)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qj3sg"]
+viewport_path = NodePath("SubViewport")
 
 [node name="Enemy" type="CharacterBody3D"]
 process_mode = 1
@@ -25,7 +28,8 @@ shape = SubResource("BoxShape3D_j1f45")
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1.469, -0.222, -1, 3.003, 0.492, 1.539)
 
-[node name="Sprite3D" parent="." instance=ExtResource("3_y6bdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+[node name="Heathbar" parent="." instance=ExtResource("3_y6bdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.826103, 0)
+texture = SubResource("ViewportTexture_qj3sg")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

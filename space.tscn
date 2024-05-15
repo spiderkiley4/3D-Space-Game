@@ -70,7 +70,21 @@ action_right = "move_right"
 action_up = "move_up"
 action_down = "move_down"
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MarginContainer/HBoxContainer"]
 position = Vector2(1800, 950)
 scale = Vector2(3.95312, 2.98438)
 texture_normal = SubResource("GradientTexture2D_r5rk4")
@@ -78,7 +92,7 @@ shape = SubResource("RectangleShape2D_j3s55")
 action = "jump"
 visibility_mode = 1
 
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="MarginContainer/HBoxContainer"]
 position = Vector2(1800, 1150)
 scale = Vector2(3.95312, 2.98438)
 texture_normal = SubResource("GradientTexture2D_r5rk4")
@@ -86,7 +100,7 @@ shape = SubResource("RectangleShape2D_j3s55")
 action = "flydown"
 visibility_mode = 1
 
-[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="MarginContainer/HBoxContainer"]
 position = Vector2(636, 84)
 scale = Vector2(3.95312, 2.98438)
 texture_normal = SubResource("GradientTexture2D_r5rk4")
@@ -95,7 +109,7 @@ action = "pause"
 visibility_mode = 1
 script = ExtResource("5_02du2")
 
-[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="MarginContainer/HBoxContainer"]
 position = Vector2(1400, 950)
 scale = Vector2(3.95312, 2.98438)
 texture_normal = SubResource("GradientTexture2D_r5rk4")

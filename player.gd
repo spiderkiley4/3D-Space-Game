@@ -46,7 +46,7 @@ func _physics_process(delta):
 		accelerationy -= 0.025
 		if accelerationy < -0.5:
 			accelerationy = -0.5
-	if Input.is_action_pressed("click"):
+	if Input.is_action_pressed("click"):# && (OS.get_name() != "Android"):
 		fireprojectile()
 	direction.x += accelerationx
 	direction.z += accelerationz
@@ -111,7 +111,7 @@ func fireprojectile():
 		owner.add_child(instance) #adds child to the 3d world
 		instance.position = $Yaw/Pitch/ShootPosition.global_position
 		#instance.rotate_y(90)
-		instance.rotate_object_local(Vector3(0, 1, 0), 90)
+		instance.rotate(Vector3(0, 1, 0), 90)
 		instance.transform.basis = $Yaw/Pitch.global_transform.basis
 		#proj_cooldown = 0
 

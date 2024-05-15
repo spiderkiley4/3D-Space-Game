@@ -8,6 +8,9 @@ extends CharacterBody3D
 
 func _physics_process(_delta):
 		move_and_slide()
+		health -= 0.05
+		if $Heathbar/SubViewport/ProgressBar.value != health:
+			$Heathbar/SubViewport/ProgressBar.value = health
 		if health <= 0:
 			queue_free()
 			
