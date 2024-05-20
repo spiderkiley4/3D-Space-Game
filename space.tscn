@@ -52,6 +52,13 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_51ds1")]
 process_mode = 1
+speed = 14
+maxspeed = 14
+fall_acceleration = 75
+camera_rotation_sensitivity = 0.002
+jump_impulse = 20
+proj_cooldown = 0
+damage = 0.05
 
 [node name="SpawnPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_t3rer")

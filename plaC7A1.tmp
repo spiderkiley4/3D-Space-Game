@@ -74,8 +74,6 @@ end_cap_mode = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="Yaw/Pitch/Camera"]
 target_position = Vector3(0, 0, -1000)
-collision_mask = 2
-collide_with_areas = true
 
 [node name="spaceship" parent="Yaw/Pitch" instance=ExtResource("1_65gyr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
