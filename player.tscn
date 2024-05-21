@@ -24,6 +24,7 @@ shape = SubResource("BoxShape3D_qy2lc")
 transform = Transform3D(1, 0, 0, 0, 0.986312, 0.164893, 0, -0.164893, 0.986311, 0, 1.95285, 3.403)
 
 [node name="Crosshair" type="Control" parent="Yaw/Pitch/Camera"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

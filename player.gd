@@ -1,5 +1,6 @@
 extends CharacterBody3D
 var projectile = preload("res://projectile.tscn")
+var pausemen = preload("res://pausemenu.tscn")
 # How fast the player moves in meters per second.
 @export var speed = 14
 @export var maxspeed = 14
@@ -55,20 +56,23 @@ func _physics_process(delta):
 			accelerationy = -0.5
 	if Input.is_action_pressed("click"):# && (OS.get_name() != "Android"):
 		if aimcast.is_colliding():
-			printerr("A")
-			var bullet = get_world_3d().direct_space_state
-			var collision = bullet.intersect_ray(Parameters)
-			if not collision.is_empty():
-				printerr("B")
-				var target = collision["collider"]
-				if target.is_in_group("Enemy"):
-					printerr("C")
-					target.health -= damage
-			#var target = aimcast.get_collider()
-			#if target != null:
+			#printerr("A")
+			#var bullet = get_world_3d().direct_space_state
+			#var collision = bullet.intersect_ray(Parameters)
+			#if not collision.is_empty():
+				#printerr("B")
+				#var target = collision["collider"]
 				#if target.is_in_group("Enemy"):
+					#printerr("C")
 					#target.health -= damage
-		#fireprojectile()
+			var target = aimcast.get_collider()
+			if target != null:
+				if target.is_in_group("Enemy"):
+					target.health -= damage
+		fireprojectile()
+	if Input.is_action_just_pressed("pause"):
+		var pause = pausemen.instantiate()
+		get_parent().add_child(pause)
 	direction.x += accelerationx
 	direction.z += accelerationz
 	direction.y += accelerationy
@@ -126,7 +130,7 @@ func _process(delta):
 	proj_cooldown += 1
 
 func fireprojectile():
-	if proj_cooldown >= 500 && get_closest_enemy() != null:
+	if proj_cooldown >= 500:
 		var instance = projectile.instantiate() #unpacks the scene that is loaded in the preload function
 		instance.position = Vector3(0, 2, 0) #set whatever position you need
 		#instance.linear_velocity = Vector3(0, 0, -20) #direction you want it to fire in
@@ -135,7 +139,7 @@ func fireprojectile():
 		#instance.rotate_y(90)
 		#instance.rotate(Vector3(0, 1, 0), 90)
 		instance.transform.basis = $Yaw/Pitch.global_transform.basis
-		instance.apply_impulse(transform.basis.z, get_closest_enemy().global_position)
+		instance.apply_impulse(transform.basis.z, -transform.basis.z * speed)
 		
 		var instance2 = projectile.instantiate() #unpacks the scene that is loaded in the preload function
 		instance2.position = Vector3(0, 2, 0) #set whatever position you need
@@ -145,9 +149,9 @@ func fireprojectile():
 		#instance2.rotate_y(90)
 		#instance2.rotate(Vector3(0, 1, 0), 90)
 		instance2.transform.basis = $Yaw/Pitch.global_transform.basis
-		instance2.apply_impulse(transform.basis.z, get_closest_enemy().global_position)
+		instance2.apply_impulse(transform.basis.z, -transform.basis.z * 500)
 		
-		#proj_cooldown = 0
+		proj_cooldown = 0
 
 func _input(event):
 	#if Input.is_key_pressed(KEY_J):

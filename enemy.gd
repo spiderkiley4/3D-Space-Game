@@ -14,6 +14,7 @@ func _physics_process(_delta):
 		if health <= 0:
 			queue_free()
 			
+			
 	# This function will be called from the Main scene.
 func initialize(start_position, player_position):
 	# We position the mob by placing it at start_position
