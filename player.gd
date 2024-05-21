@@ -1,5 +1,6 @@
 extends CharacterBody3D
 var projectile = preload("res://projectile.tscn")
+var bullet_trail = preload("res://bullet_trail.tscn")
 var pausemen = preload("res://pausemenu.tscn")
 # How fast the player moves in meters per second.
 @export var speed = 14
@@ -17,6 +18,7 @@ var accelerationz = 0
 
 var target_velocity = Vector3.ZERO
 @onready var aimcast = $Yaw/Pitch/Camera/RayCast3D
+@onready var aimcastend = $Yaw/Pitch/Camera/RayCast3D/RayCastEnd
 @onready var muzzle = $Yaw/Pitch/GunMid/Muzzle
 #@onready var crosshair = $Yaw/Pitch/Camera/Crosshair
 @onready var Parameters = PhysicsRayQueryParameters3D.create(muzzle.transform.origin, aimcast.get_collision_point(),0b11111111_11111111_11111111_11111110)
@@ -55,7 +57,9 @@ func _physics_process(delta):
 		if accelerationy < -0.5:
 			accelerationy = -0.5
 	if Input.is_action_pressed("click"):# && (OS.get_name() != "Android"):
+		var instance = bullet_trail.instantiate()
 		if aimcast.is_colliding():
+			instance.init(muzzle.global_position, aimcast.get_collision_point())
 			#printerr("A")
 			#var bullet = get_world_3d().direct_space_state
 			#var collision = bullet.intersect_ray(Parameters)
@@ -69,6 +73,9 @@ func _physics_process(delta):
 			if target != null:
 				if target.is_in_group("Enemy"):
 					target.health -= damage
+		else:
+			instance.init(muzzle.global_position, aimcastend.global_position)
+		get_parent().add_child(instance)
 		fireprojectile()
 	if Input.is_action_just_pressed("pause"):
 		var pause = pausemen.instantiate()

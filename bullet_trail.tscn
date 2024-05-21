@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://df7wtimuuljds"]
+
+[ext_resource type="Script" path="res://BulletTrail.gd" id="1_l8lcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_501xu"]
+
+[node name="BulletTrail" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_501xu")
+script = ExtResource("1_l8lcx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

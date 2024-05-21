@@ -1,4 +1,5 @@
 extends CharacterBody3D
+signal killed
 
 # Minimum speed of the mob in meters per second.
 @export var min_speed = 10
@@ -6,12 +7,14 @@ extends CharacterBody3D
 @export var max_speed = 18
 @export var health = 5
 
+
 func _physics_process(_delta):
 		move_and_slide()
 		#health -= 0.05
 		if $Heathbar/SubViewport/ProgressBar.value != health:
 			$Heathbar/SubViewport/ProgressBar.value = health
 		if health <= 0:
+			killed.emit()
 			queue_free()
 			
 			

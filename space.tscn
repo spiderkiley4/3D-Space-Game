@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=16 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
 [ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
 [ext_resource type="Script" path="res://pausebutton.gd" id="5_02du2"]
 [ext_resource type="FontFile" uid="uid://3s54lwli24nw" path="res://Assets/dogicapixel.ttf" id="6_tf6mq"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="7_5dqb3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
 size = Vector3(60, 1, 60)
@@ -122,10 +123,13 @@ shape = SubResource("RectangleShape2D_j3s55")
 action = "fire_projectile"
 visibility_mode = 1
 
-[node name="Label" type="Label" parent="."]
-offset_right = 61.0
-offset_bottom = 23.0
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 265.0
+offset_bottom = 60.0
 theme = SubResource("Theme_yr755")
 text = "Score: 0"
+script = ExtResource("7_5dqb3")
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
