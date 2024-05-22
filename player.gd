@@ -60,6 +60,7 @@ func _physics_process(delta):
 		var instance = bullet_trail.instantiate()
 		if aimcast.is_colliding():
 			instance.init(muzzle.global_position, aimcast.get_collision_point())
+			get_parent().add_child(instance)
 			#printerr("A")
 			#var bullet = get_world_3d().direct_space_state
 			#var collision = bullet.intersect_ray(Parameters)
@@ -72,10 +73,12 @@ func _physics_process(delta):
 			var target = aimcast.get_collider()
 			if target != null:
 				if target.is_in_group("Enemy"):
+					instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, true)
 					target.health -= damage
 		else:
 			instance.init(muzzle.global_position, aimcastend.global_position)
-		get_parent().add_child(instance)
+			get_parent().add_child(instance)
+			instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
 		fireprojectile()
 	if Input.is_action_just_pressed("pause"):
 		var pause = pausemen.instantiate()

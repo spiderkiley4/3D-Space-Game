@@ -1,5 +1,8 @@
 extends MeshInstance3D
 
+var alpha = 1.0
+@onready var scrap = $GPUParticles3D
+@onready var terrain = $GPUParticles3D2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +18,18 @@ func init(pos1,pos2):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	alpha -= delta * 3.5
+	material_override.albedo_color.a = alpha
 
+func trigger_particles(pos, gun_pos, on_enemy):
+	if on_enemy:
+		scrap.position = pos
+		scrap.look_at(gun_pos)
+		scrap.emitting = true
+	else:
+		terrain.position = pos
+		terrain.look_at(gun_pos)
+		terrain.emitting = true
 
 func _on_timer_timeout():
 	queue_free()
