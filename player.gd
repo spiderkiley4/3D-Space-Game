@@ -10,7 +10,7 @@ var pausemen = preload("res://pausemenu.tscn")
 @export var camera_rotation_sensitivity = 0.002
 @export var jump_impulse = 20
 @export var proj_cooldown = 0
-@export var damage = 0.05
+@export var damage = 0.1
 
 var accelerationx = 0
 var accelerationy = 0
@@ -79,7 +79,7 @@ func _physics_process(delta):
 			instance.init(muzzle.global_position, aimcastend.global_position)
 			get_parent().add_child(instance)
 			instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
-		fireprojectile()
+		#fireprojectile()
 	if Input.is_action_just_pressed("pause"):
 		var pause = pausemen.instantiate()
 		get_parent().add_child(pause)

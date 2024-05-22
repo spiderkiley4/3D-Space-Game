@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://clu4y2nqf1l6q"]
+[gd_scene load_steps=6 format=3 uid="uid://clu4y2nqf1l6q"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_04nkc"]
+[ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_x15aj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohaye"]
+region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="Gradient" id="Gradient_qj5ix"]
 
@@ -27,7 +31,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_sbg1w")
+texture = SubResource("AtlasTexture_ohaye")
 
 [node name="Menu Options" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -54,5 +58,13 @@ texture = SubResource("GradientTexture2D_sbg1w")
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(1000, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_x15aj")
+text = "[Insert game name here]"
 
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="." method="_on_play_gui_input"]

@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://sk7gttjxyvvo"]
+[gd_scene load_steps=15 format=3 uid="uid://sk7gttjxyvvo"]
 
 [ext_resource type="PackedScene" uid="uid://cicla0dsip0ct" path="res://player.tscn" id="1_51ds1"]
 [ext_resource type="Script" path="res://main.gd" id="1_pnx73"]
 [ext_resource type="PackedScene" uid="uid://durgo5cvq8i04" path="res://enemy.tscn" id="2_3nr31"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="4_lwk1f"]
 [ext_resource type="Script" path="res://pausebutton.gd" id="5_02du2"]
-[ext_resource type="FontFile" uid="uid://3s54lwli24nw" path="res://Assets/dogicapixel.ttf" id="6_tf6mq"]
+[ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="6_33yb7"]
 [ext_resource type="Script" path="res://ScoreLabel.gd" id="7_5dqb3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hpg6"]
@@ -32,10 +32,6 @@ gradient = SubResource("Gradient_vyb8j")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3s55"]
 size = Vector2(60, 60)
-
-[sub_resource type="Theme" id="Theme_yr755"]
-default_font = ExtResource("6_tf6mq")
-default_font_size = 40
 
 [node name="Main" type="Node"]
 script = ExtResource("1_pnx73")
@@ -128,7 +124,7 @@ offset_left = 25.0
 offset_top = 25.0
 offset_right = 265.0
 offset_bottom = 60.0
-theme = SubResource("Theme_yr755")
+theme = ExtResource("6_33yb7")
 text = "Score: 0"
 script = ExtResource("7_5dqb3")
 
