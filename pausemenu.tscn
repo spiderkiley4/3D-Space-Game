@@ -1,16 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://rm00vklca8f"]
+[gd_scene load_steps=5 format=3 uid="uid://rm00vklca8f"]
 
 [ext_resource type="Script" path="res://pausemenu.gd" id="1_5pagw"]
+[ext_resource type="Shader" path="res://pausemenu.gdshader" id="2_ggdhc"]
+[ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_s1pkh"]
 
-[sub_resource type="Gradient" id="Gradient_hes3t"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ln30l"]
-gradient = SubResource("Gradient_hes3t")
-
-[sub_resource type="Gradient" id="Gradient_qhdsy"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vsbky"]
-gradient = SubResource("Gradient_qhdsy")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r6en0"]
+shader = ExtResource("2_ggdhc")
+shader_parameter/amount = 2.0
 
 [node name="PauseMenu" type="MarginContainer"]
 process_mode = 3
@@ -20,6 +16,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5pagw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_r6en0")
+layout_mode = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -41,17 +42,42 @@ size_flags_vertical = 3
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(220, 70)
 layout_mode = 2
-texture = SubResource("GradientTexture2D_ln30l")
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_s1pkh")
+text = "Resume"
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(610, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_s1pkh")
+text = "Return To Main Menu"
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_s1pkh")
+text = "Quit"
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
-texture = SubResource("GradientTexture2D_vsbky")
-
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/TextureRect" to="." method="_on_play_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel2" to="." method="_on_play_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel4" to="." method="_on_menu_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel3" to="." method="_on_quit_gui_input"]

@@ -75,10 +75,11 @@ func _physics_process(delta):
 				if target.is_in_group("Enemy"):
 					instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, true)
 					target.health -= damage
+				else:
+					instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
 		else:
 			instance.init(muzzle.global_position, aimcastend.global_position)
 			get_parent().add_child(instance)
-			instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
 		#fireprojectile()
 	if Input.is_action_just_pressed("pause"):
 		var pause = pausemen.instantiate()

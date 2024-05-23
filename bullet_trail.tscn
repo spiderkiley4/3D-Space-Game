@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://df7wtimuuljds"]
+[gd_scene load_steps=7 format=3 uid="uid://df7wtimuuljds"]
 
 [ext_resource type="Script" path="res://BulletTrail.gd" id="1_l8lcx"]
 
@@ -10,42 +10,24 @@ emission = Color(0.588235, 0.65098, 0.333333, 1)
 emission_energy_multiplier = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ilgeb"]
-albedo_color = Color(0.340339, 0.340339, 0.340339, 1)
+albedo_color = Color(0.372549, 0.372549, 0.372549, 1)
 roughness = 0.45
 emission_enabled = true
-emission = Color(0.560955, 0.560955, 0.560955, 1)
+emission = Color(0.372549, 0.372549, 0.372549, 1)
 emission_energy_multiplier = 0.4
 
-[sub_resource type="Curve" id="Curve_ko2vq"]
-min_value = -360.0
-max_value = 360.0
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_08agm"]
-curve = SubResource("Curve_ko2vq")
-
-[sub_resource type="Curve" id="Curve_din7v"]
-_data = [Vector2(0.0833333, 0.923077), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_wtbai"]
-curve = SubResource("Curve_din7v")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vw0jg"]
-lifetime_randomness = 0.3
 inherit_velocity_ratio = 0.3
 direction = Vector3(1, 0, -1)
-angular_velocity_min = 6.0
-angular_velocity_max = 8.0
-angular_velocity_curve = SubResource("CurveTexture_08agm")
-radial_velocity_min = 6.0
-radial_velocity_max = 8.0
-radial_velocity_curve = SubResource("CurveTexture_wtbai")
 
 [sub_resource type="SphereMesh" id="SphereMesh_c2bae"]
-radius = 0.25
-height = 0.5
+radius = 0.04
+height = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6aswo"]
+albedo_color = Color(0.235294, 0.352941, 0.462745, 1)
+roughness = 0.45
+emission = Color(0.235294, 0.352941, 0.462745, 1)
 
 [node name="BulletTrail" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_501xu")
@@ -65,7 +47,7 @@ process_material = SubResource("ParticleProcessMaterial_vw0jg")
 draw_pass_1 = SubResource("SphereMesh_c2bae")
 
 [node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-material_override = SubResource("StandardMaterial3D_ilgeb")
+material_override = SubResource("StandardMaterial3D_6aswo")
 emitting = false
 amount = 4
 one_shot = true

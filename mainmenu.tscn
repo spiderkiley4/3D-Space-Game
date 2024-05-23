@@ -1,15 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://clu4y2nqf1l6q"]
+[gd_scene load_steps=3 format=3 uid="uid://clu4y2nqf1l6q"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_04nkc"]
 [ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_x15aj"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ohaye"]
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="Gradient" id="Gradient_qj5ix"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sbg1w"]
-gradient = SubResource("Gradient_qj5ix")
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -23,42 +15,6 @@ theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 80
 script = ExtResource("1_04nkc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_ohaye")
-
-[node name="Menu Options" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 25
-alignment = 1
-
-[node name="Play" type="TextureRect" parent="HBoxContainer/VBoxContainer/Menu Options"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_sbg1w")
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Menu Options"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_sbg1w")
-
-[node name="TextureRect4" type="TextureRect" parent="HBoxContainer/VBoxContainer/Menu Options"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_sbg1w")
-
-[node name="TextureRect5" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_sbg1w")
-
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(1000, 100)
 layout_mode = 2
@@ -67,4 +23,41 @@ size_flags_vertical = 0
 theme = ExtResource("2_x15aj")
 text = "[Insert game name here]"
 
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="." method="_on_play_gui_input"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Menu Options" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("2_x15aj")
+text = "Play"
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
+custom_minimum_size = Vector2(140, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_x15aj")
+text = "Quit"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/RichTextLabel2" to="." method="_on_play_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/RichTextLabel3" to="." method="_on_quit_gui_input"]

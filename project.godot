@@ -13,7 +13,11 @@ config_version=5
 config/name="3D Space Game"
 run/main_scene="res://mainmenu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.png"
+
+[autoload]
+
+SceneSwitcher="*res://scene_switcher.gd"
 
 [display]
 
