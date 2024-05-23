@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://rm00vklca8f"]
+[gd_scene load_steps=6 format=3 uid="uid://rm00vklca8f"]
 
 [ext_resource type="Script" path="res://pausemenu.gd" id="1_5pagw"]
 [ext_resource type="Shader" path="res://pausemenu.gdshader" id="2_ggdhc"]
 [ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_s1pkh"]
+[ext_resource type="Script" path="res://Text.gd" id="4_dmucv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r6en0"]
 shader = ExtResource("2_ggdhc")
@@ -36,48 +37,54 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Menu Options" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Play" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(220, 70)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("2_s1pkh")
 text = "Resume"
+script = ExtResource("4_dmucv")
 
-[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="ReturnToMenu" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(610, 70)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2_s1pkh")
 text = "Return To Main Menu"
+script = ExtResource("4_dmucv")
 
-[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Quit" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(140, 70)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2_s1pkh")
-text = "Quit"
+text = "Quit To Desktop"
+script = ExtResource("4_dmucv")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel2" to="." method="_on_play_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel4" to="." method="_on_menu_gui_input"]
-[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/Menu Options/RichTextLabel3" to="." method="_on_quit_gui_input"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Play" to="." method="_on_play_gui_input"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Play" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Play" method="mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Play" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Play" method="mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMenu" to="." method="_on_menu_gui_input"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMenu" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMenu" method="mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMenu" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/ReturnToMenu" method="mouse_exited"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" to="." method="_on_quit_gui_input"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" method="mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" to="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions/Quit" method="mouse_exited"]

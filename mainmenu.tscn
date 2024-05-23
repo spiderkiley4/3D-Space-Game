@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clu4y2nqf1l6q"]
+[gd_scene load_steps=4 format=3 uid="uid://clu4y2nqf1l6q"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_04nkc"]
 [ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_x15aj"]
+[ext_resource type="Script" path="res://Text.gd" id="3_kkyy4"]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
@@ -35,29 +36,35 @@ size_flags_vertical = 3
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Play" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
 custom_minimum_size = Vector2(140, 70)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("2_x15aj")
 text = "Play"
+script = ExtResource("3_kkyy4")
 
 [node name="Control" type="Control" parent="HBoxContainer/VBoxContainer/Menu Options"]
 custom_minimum_size = Vector2(140, 50)
 layout_mode = 2
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
+[node name="Quit" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/Menu Options"]
 custom_minimum_size = Vector2(140, 70)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2_x15aj")
 text = "Quit"
+script = ExtResource("3_kkyy4")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/RichTextLabel2" to="." method="_on_play_gui_input"]
-[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/RichTextLabel3" to="." method="_on_quit_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="." method="_on_play_gui_input"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="HBoxContainer/VBoxContainer/Menu Options/Play" method="mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="HBoxContainer/VBoxContainer/Menu Options/Play" method="mouse_exited"]
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/Quit" to="." method="_on_quit_gui_input"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Menu Options/Quit" to="HBoxContainer/VBoxContainer/Menu Options/Quit" method="mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/Menu Options/Quit" to="HBoxContainer/VBoxContainer/Menu Options/Quit" method="mouse_exited"]

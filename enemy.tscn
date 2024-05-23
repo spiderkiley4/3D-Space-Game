@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://durgo5cvq8i04"]
+[gd_scene load_steps=8 format=3 uid="uid://durgo5cvq8i04"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_kn47h"]
-[ext_resource type="PackedScene" uid="uid://clbukwyrfpgwc" path="res://Assets/spaceship.glb" id="1_tot12"]
+[ext_resource type="ArrayMesh" uid="uid://csricdxe1ehwy" path="res://Assets/spaceship.obj" id="2_1ev35"]
 [ext_resource type="PackedScene" uid="uid://br2t300sbpsan" path="res://healthbar.tscn" id="3_y6bdj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycmx7"]
+albedo_color = Color(1, 0.443698, 0.374976, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kg30x"]
+albedo_color = Color(1, 0.346577, 0.280009, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j1f45"]
 size = Vector3(6.045, 0.87, 2.965)
@@ -18,8 +24,12 @@ script = ExtResource("1_kn47h")
 
 [node name="Pivot" type="Node3D" parent="."]
 
-[node name="spaceship" parent="Pivot" instance=ExtResource("1_tot12")]
+[node name="spaceship" type="MeshInstance3D" parent="Pivot"]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0, 0)
+mesh = ExtResource("2_1ev35")
+surface_material_override/0 = SubResource("StandardMaterial3D_ycmx7")
+surface_material_override/1 = SubResource("StandardMaterial3D_ycmx7")
+surface_material_override/2 = SubResource("StandardMaterial3D_kg30x")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -0.244812)
