@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://pausemenu.gd" id="1_5pagw"]
 [ext_resource type="Shader" path="res://pausemenu.gdshader" id="2_ggdhc"]
 [ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_s1pkh"]
-[ext_resource type="Script" path="res://Text.gd" id="4_dmucv"]
+[ext_resource type="Script" path="res://buttons.gd" id="4_s5hnp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r6en0"]
 shader = ExtResource("2_ggdhc")
@@ -49,7 +49,7 @@ layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("2_s1pkh")
 text = "Resume"
-script = ExtResource("4_dmucv")
+script = ExtResource("4_s5hnp")
 
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(140, 50)
@@ -61,7 +61,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_s1pkh")
 text = "Return To Main Menu"
-script = ExtResource("4_dmucv")
+script = ExtResource("4_s5hnp")
 
 [node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/MenuOptions"]
 custom_minimum_size = Vector2(140, 50)
@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_s1pkh")
 text = "Quit To Desktop"
-script = ExtResource("4_dmucv")
+script = ExtResource("4_s5hnp")
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2

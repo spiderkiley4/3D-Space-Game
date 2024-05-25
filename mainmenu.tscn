@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_04nkc"]
 [ext_resource type="Theme" uid="uid://dxy6xh2vfoyvn" path="res://Assets/TextFont.tres" id="2_x15aj"]
-[ext_resource type="Script" path="res://Text.gd" id="3_kkyy4"]
+[ext_resource type="Script" path="res://buttons.gd" id="3_kkyy4"]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
