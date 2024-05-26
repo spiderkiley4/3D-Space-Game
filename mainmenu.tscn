@@ -62,6 +62,16 @@ script = ExtResource("3_kkyy4")
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="version" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("2_x15aj")
+text = "v1.0"
+fit_content = true
+scroll_active = false
+
 [connection signal="gui_input" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="." method="_on_play_gui_input"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="HBoxContainer/VBoxContainer/Menu Options/Play" method="mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/Menu Options/Play" to="HBoxContainer/VBoxContainer/Menu Options/Play" method="mouse_exited"]

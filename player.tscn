@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://cuut5asfdwcr8" path="res://Assets/ShipMainColor.tres" id="4_x5gff"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qy2lc"]
-size = Vector3(6.045, 0.87, 2.965)
+size = Vector3(6.045, 0.87, 3.00984)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1y05g"]
 
@@ -15,7 +15,7 @@ collision_mask = 6
 script = ExtResource("1_q6i3b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.507382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.48496)
 shape = SubResource("BoxShape3D_qy2lc")
 
 [node name="Yaw" type="Node3D" parent="."]

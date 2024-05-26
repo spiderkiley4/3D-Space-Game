@@ -73,10 +73,11 @@ func _physics_process(delta):
 			var target = aimcast.get_collider()
 			if target != null:
 				if target.is_in_group("Enemy"):
-					instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, true)
+					#instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, true)
 					target.health -= damage
 				else:
-					instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
+					#instance.trigger_particles(aimcast.get_collision_point(),muzzle.global_position, false)
+					pass
 		else:
 			instance.init(muzzle.global_position, aimcastend.global_position)
 			get_parent().add_child(instance)

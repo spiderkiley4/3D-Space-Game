@@ -6,15 +6,19 @@ signal killed
 # Maximum speed of the mob in meters per second.
 @export var max_speed = 18
 @export var health = 5
+@export var score = 2
 
+func _ready():
+	$Healthbar.maxhealth = health
+	#$Pivot/enemyboss/AnimationPlayer.play("Pulse")
 
 func _physics_process(_delta):
 		move_and_slide()
 		#health -= 0.05
-		if $Heathbar/SubViewport/ProgressBar.value != health:
-			$Heathbar/SubViewport/ProgressBar.value = health
+		if $Healthbar/SubViewport/ProgressBar.value != health:
+			$Healthbar/SubViewport/ProgressBar.value = health
 		if health <= 0:
-			killed.emit()
+			killed.emit(score)
 			queue_free()
 			
 			
@@ -22,10 +26,10 @@ func _physics_process(_delta):
 func initialize(start_position, player_position):
 	# We position the mob by placing it at start_position
 	# and rotate it towards player_position, so it looks at the player.
-	look_at_from_position(start_position, player_position, Vector3.UP)
+	#look_at_from_position(start_position, player_position, Vector3.UP)
 # Rotate this mob randomly within range of -90 and +90 degrees,
 	# so that it doesn't move directly towards the player.
-	rotate_y(randf_range(-PI / 4, PI / 4))
+	rotate_y(randf_range(-PI * 2, PI * 2))
 	
 	# We calculate a random speed (integer)
 	var random_speed = randi_range(min_speed, max_speed)
