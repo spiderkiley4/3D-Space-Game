@@ -19,7 +19,7 @@ size = Vector3(2.5, 3.2, 2.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_qj3sg"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Enemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="EnemyBoss" type="CharacterBody3D" groups=["Enemy"]]
 process_mode = 1
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 2.5, 0)
 collision_layer = 2

@@ -44,7 +44,7 @@ shape = SubResource("BoxShape3D_j1f45")
 aabb = AABB(-0.623355, -0.799237, -0.623596, 1.24671, 1.59847, 1.24719)
 
 [node name="Healthbar" parent="." instance=ExtResource("3_tikpx")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.826103, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.02535, 0)
 texture = SubResource("ViewportTexture_qj3sg")
 maxhealth = 2
 
